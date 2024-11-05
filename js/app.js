@@ -28,9 +28,14 @@ function getEmails() {
             } else {
                 newElement = createElement('li', 'Failed to load Email')
             }
-            list_container.append(newElement)
+
+            docFragment.appendChild(newElement)
         })
+
+        list_container.append(docFragment)
     })
+
+    // Se metto l'append del docFragment QUI non funziona?!
 }
 
 function createElement(type = 'div', content = '', classes = []) {
