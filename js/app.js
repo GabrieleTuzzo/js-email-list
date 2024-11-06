@@ -1,7 +1,7 @@
 console.log('js')
 
-const randomEmailAPI = 'https://flynn.boolean.careers/exercises/api/random/mail'
 const list_container = document.getElementById('list_container')
+const reload_btn = document.getElementById('reload_btn')
 
 function getEmail() {
     return axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
@@ -31,10 +31,8 @@ function getEmails() {
 
             docFragment.appendChild(newElement)
         })
-
         list_container.append(docFragment)
     })
-
     // Se metto l'append del docFragment QUI non funziona?!
 }
 
@@ -49,3 +47,8 @@ function createElement(type = 'div', content = '', classes = []) {
 }
 
 getEmails()
+
+reload_btn.addEventListener('click', () => {
+    list_container.innerHTML = ''
+    getEmails()
+})
